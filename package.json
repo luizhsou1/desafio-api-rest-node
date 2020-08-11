@@ -4,7 +4,11 @@
   "description": "Desafio proposto pelo BTG Pactual para seguir para a próxima fase da entrevista",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:unit": "npm test -- --watch -c jest-unit.config.js",
+    "test:integration": "npm test -- --watch -c jest-integration.config.js",
+    "test:cov": "npm test -- --coverage",
+    "test:clear": "jest --clearCache"
   },
   "repository": {
     "type": "git",
@@ -17,14 +21,17 @@
   },
   "homepage": "https://github.com/luizhsou1/desafio-btg-pactual#readme",
   "devDependencies": {
+    "@types/jest": "^26.0.9",
     "@types/node": "^14.0.27",
     "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
     "eslint": "^7.6.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
+    "jest": "^26.3.0",
+    "ts-jest": "^26.2.0",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   },
-  "dependencies": {
-    "@typescript-eslint/parser": "^3.9.0"
-  }
+  "dependencies": {}
 }
