@@ -1,0 +1,45 @@
+{
+    "env": {
+        "es2020": true,
+        "node": true,
+        "jest": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 1,
+                "maxEOF": 0,
+                "maxBOF": 0
+            }
+        ],
+        "import/prefer-default-export": "off",
+        "import/extensions": "off",
+        "import/no-unresolved": "off",
+        "lines-between-class-members": "off",
+        "no-underscore-dangle": "off",
+        "max-classes-per-file": "off",
+        "no-param-reassign": "off",
+        "no-unused-vars": "off",
+        "no-useless-constructor": "off",
+        "no-empty-function": ["error", { "allow": ["constructors"] }],
+        "max-len": "off",
+        "class-methods-use-this": "off",
+        "no-restricted-syntax": ["off", "ForOfStatement"],
+        "import/no-extraneous-dependencies": "off",
+        "object-curly-newline": "off",
+        "consistent-return": "off",
+        "no-return-await": "off"
+    }
+}
