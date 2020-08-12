@@ -1,4 +1,5 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
+import { nextTick } from 'process';
 import { Controller } from '../../../shared/controller';
 import { UseCase } from '../../../shared/use-case';
 import { LoginDto, LoginDtoOutput } from '../../domain/use-cases/login';
@@ -9,17 +10,14 @@ export class LoginController implements Controller {
     private login: UseCase<LoginDto, LoginDtoOutput>,
   ) {}
 
-  async handle(req: Request, res: Response): Promise<Response> {
+  async handle(req: Request, res: Response, next: NextFunction): Promise<Response> {
     try {
       this._validation(req.body);
       const userDto = await this.login.execute(req.body);
 
       return res.status(200).json(userDto);
     } catch (error) {
-      if (error instanceof DomainError || error instanceof ValidationError) {
-        return res.status(400).json(error);
-      }
-      return res.status(500).json({ error: 'InternalServerError' });
+      next(error);
     }
   }
 

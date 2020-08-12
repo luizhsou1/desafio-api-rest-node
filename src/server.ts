@@ -1,4 +1,4 @@
-import { port } from './configs/env';
+import { port } from './main/env';
 import { app } from './main/app';
 
-app.listen(port);
+app.listen(port, () => console.log(`Running in port: ${port}`));

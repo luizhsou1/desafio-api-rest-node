@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { Controller } from '../../../shared/controller';
 import { UseCase } from '../../../shared/use-case';
 import { RegisterUserDto } from '../../domain/use-cases/register-user';
@@ -10,17 +10,14 @@ export class RegisterUserController implements Controller {
     private registerUser: UseCase<RegisterUserDto, LoginDtoOutput>,
   ) {}
 
-  async handle(request: Request, response: Response): Promise<Response> {
+  async handle(req: Request, res: Response, next: NextFunction): Promise<Response> {
     try {
-      this._validation(request.body);
-      const userDto = await this.registerUser.execute(request.body);
+      this._validation(req.body);
+      const userDto = await this.registerUser.execute(req.body);
 
-      return response.status(201).json(userDto);
+      return res.status(201).json(userDto);
     } catch (error) {
-      if (error instanceof DomainError || error instanceof ValidationError) {
-        return response.status(400).json(error);
-      }
-      return response.status(500).json({ error: 'InternalServerError' });
+      next(error);
     }
   }
 

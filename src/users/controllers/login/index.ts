@@ -1,7 +1,7 @@
 import { LoginController } from './login-controller';
 import { UsersRepositoryFile } from '../../repositories/implementations/users-repository-file';
 import { JsonWebTokenImpl } from '../../../infra/jwt/json-web-token-impl';
-import { jwtSecret, jwtExpirationTime } from '../../../configs/env';
+import { jwtSecret, jwtExpirationTime } from '../../../main/env';
 import { Login } from '../../domain/use-cases/login';
 
 const usersRepoFile = new UsersRepositoryFile();

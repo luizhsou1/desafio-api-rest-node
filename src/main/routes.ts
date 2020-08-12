@@ -5,8 +5,8 @@ import { updateUserController } from '../users/controllers/update-user';
 
 const router = Router();
 
-router.post('/register', (req, res) => registerUserController.handle(req, res));
-router.post('/login', (req, res) => loginController.handle(req, res));
-router.put('/users', (req, res) => updateUserController.handle(req, res));
+router.post('/register', (req, res, next) => registerUserController.handle(req, res, next));
+router.post('/login', (req, res, next) => loginController.handle(req, res, next));
+router.put('/users', (req, res, next) => updateUserController.handle(req, res, next));
 
 export { router };
