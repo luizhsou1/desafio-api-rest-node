@@ -34,13 +34,4 @@ describe('Repository - UsersRepositoryFile', () => {
     const us = await sut.findByEmail(fakeUserDto.email);
     expect(us.toDto().fullName).toBe('John');
   });
-
-  test('Deve atualizar informação de usuário existente', async () => {
-    const sut = new UsersRepositoryFile('./files/users-test.json');
-
-    const fakeUserDto = makeUserDtoFake();
-    fakeUserDto.fullName = 'John';
-    const u = await User.create(fakeUserDto);
-    await sut.saveTxt(u);
-  });
 });

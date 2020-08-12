@@ -9,7 +9,7 @@ import { jsonReader, jsonWriter, textWriter } from '../../../shared/files-helper
 export class UsersRepositoryFile implements IUsersRepository {
   private filename: string;
   constructor(filename?: string) {
-    this.filename = filename || './files/users-test.json';
+    this.filename = filename || './files/users.json';
   }
 
   async save(user: User): Promise<void> {
