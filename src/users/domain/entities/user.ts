@@ -11,7 +11,7 @@ export interface UserDto {
 }
 
 export class User {
-  private _email: Email;
+  private _email: Email; // Será usado como identificador único da entidade
   private _password: Password;
   private _fullName?: string;
   private _dateOfBirth?: DateOfBirth;
@@ -45,14 +45,18 @@ export class User {
    */
   toDto(): UserDto {
     return {
-      email: this._email.value,
-      password: this._password.value,
+      email: this.email.value,
+      password: this.password.value,
       fullName: this._fullName,
       dateOfBirth: this._dateOfBirth.value,
       cpf: this._cpf.value,
       rg: this._rg,
       ip: this._ip,
     };
+  }
+
+  get email(): Email {
+    return this._email;
   }
 
   get password(): Password {
