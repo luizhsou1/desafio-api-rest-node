@@ -6,3 +6,18 @@ export class DomainError extends Error {
     this.name = name;
   }
 }
+
+export class NotFoundError extends DomainError {
+  constructor(name: string, message: string) {
+    super(name, message);
+  }
+}
+
+export class ValidationError extends Error {
+  param: string;
+  constructor(message: string, param: string) {
+    super(message);
+    this.name = 'ValidationError';
+    this.param = param;
+  }
+}
