@@ -1,7 +1,8 @@
 import { UseCase } from '@/shared/use-case';
 import { User } from '@/users/domain/entities/user';
 import { IUsersRepository } from '@/users/repositories/i-users-repository';
-import { IJsonWebToken } from '@/providers/jwt/i-json-web-token';
+import { IJsonWebToken } from '@/infra/jwt/i-json-web-token';
+import { UserInUseError } from '@/shared/errors';
 import { LoginDtoOutput } from './login';
 
 export interface RegisterUserDto {
@@ -21,7 +22,12 @@ export class RegisterUser implements UseCase<RegisterUserDto, LoginDtoOutput> {
   ) {}
 
   async execute(data?: RegisterUserDto): Promise<LoginDtoOutput> {
-    const user = await User.create({
+    let user = await this.usersRepo.findByEmail(data.email);
+    if (user) {
+      throw new UserInUseError();
+    }
+
+    user = await User.create({
       email: data.email,
       password: data.password,
       ip: this.ip,

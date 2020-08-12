@@ -1,7 +1,7 @@
 import { UseCase } from '@/shared/use-case';
 import { NotFoundError } from '@/shared/errors';
 import { IUsersRepository } from '@/users/repositories/i-users-repository';
-import { IJsonWebToken } from '@/providers/jwt/i-json-web-token';
+import { IJsonWebToken } from '@/infra/jwt/i-json-web-token';
 import { UserDto } from '@/users/domain/entities/user';
 import { InvalidPasswordError } from '../value-objects';
 

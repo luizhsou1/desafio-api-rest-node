@@ -1,4 +1,3 @@
-import { jsonWriter } from '@/shared/files-helper';
 import { User, UserDto } from '../../../users/domain/entities/user';
 import { UsersRepositoryFile } from './users-repository-file';
 
@@ -13,10 +12,6 @@ export const makeUserDtoFake = (): UserDto => ({
 });
 
 describe('Repository - UsersRepositoryFile', () => {
-  // beforeEach(async () => {
-  //   jsonWriter('./src/shared/infra/files/users-tests.json', []);
-  // });
-
   test('Deve salvar novo usuário', async () => {
     const sut = new UsersRepositoryFile();
 
@@ -29,7 +24,7 @@ describe('Repository - UsersRepositoryFile', () => {
   });
 
   test('Deve atualizar informação de usuário existente', async () => {
-    const sut = new UsersRepositoryFile('./src/shared/files-test');
+    const sut = new UsersRepositoryFile('./src/infra/files/test');
 
     const fakeUserDto = makeUserDtoFake();
     fakeUserDto.fullName = 'John';
@@ -41,7 +36,7 @@ describe('Repository - UsersRepositoryFile', () => {
   });
 
   test('Deve atualizar informação de usuário existente', async () => {
-    const sut = new UsersRepositoryFile('./src/shared/files-test');
+    const sut = new UsersRepositoryFile('./src/infra/files/test');
 
     const fakeUserDto = makeUserDtoFake();
     fakeUserDto.fullName = 'John';

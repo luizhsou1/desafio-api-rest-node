@@ -1,6 +1,6 @@
 import { UsersRepositoryFile } from '@/users/repositories/implementations/users-repository-file';
 import { jwtSecret, jwtExpirationTime } from '@/configs/env';
-import { JsonWebTokenImpl } from '@/providers/jwt/json-web-token-impl';
+import { JsonWebTokenImpl } from '@/infra/jwt/json-web-token-impl';
 import { RegisterUser } from '@/users/domain/use-cases/register-user';
 import { RegisterUserController } from './register-user-controller';
 

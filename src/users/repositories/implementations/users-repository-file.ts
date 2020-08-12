@@ -3,13 +3,13 @@
 // Mas tem o método saveTxt que persiti o usuário como txt no formato proposto no desafio, para poder ser baixado posteriormente
 
 import { User, UserDto } from '@/users/domain/entities/user';
-import { jsonReader, jsonWriter, textWriter } from '@/shared/files-helper';
+import { jsonReader, jsonWriter, textWriter } from '@/infra/files/files-helper';
 import { IUsersRepository } from '../i-users-repository';
 
 export class UsersRepositoryFile implements IUsersRepository {
   private dirname: string;
   constructor(dirname?: string) {
-    this.dirname = dirname || './src/shared/files';
+    this.dirname = dirname || './src/infra/files';
   }
 
   async save(user: User): Promise<void> {

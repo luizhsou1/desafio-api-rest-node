@@ -1,0 +1,9 @@
+Ex:
+Nome Completo: John
+Data de Nascimento: 14/01/1997
+CPF: 395.365.800-04
+RG: 12345678
+
+Usuario Autenticado
+Login: luiz@mail.com
+IP: 127.0.0.1 (IP do último acesso)

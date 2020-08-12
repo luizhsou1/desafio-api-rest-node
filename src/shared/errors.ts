@@ -13,6 +13,12 @@ export class NotFoundError extends DomainError {
   }
 }
 
+export class UserInUseError extends DomainError {
+  constructor() {
+    super('UserInUseError', 'Usuário já cadastrado anteriormente!');
+  }
+}
+
 export class ValidationError extends Error {
   param: string;
   constructor(message: string, param: string) {
