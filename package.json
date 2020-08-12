@@ -4,6 +4,7 @@
   "description": "Desafio proposto pelo BTG Pactual para seguir para a próxima fase da entrevista",
   "main": "index.js",
   "scripts": {
+    "start": "tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts",
     "build": "rimraf dist && tsc -p tsconfig.build.json",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
@@ -37,6 +38,7 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^26.2.0",
     "ts-node": "^8.10.2",
+    "ts-node-dev": "^1.0.0-pre.56",
     "typescript": "^3.9.7"
   },
   "dependencies": {

@@ -12,6 +12,6 @@ const login = new Login(
   jsonWebTokenImpl,
 );
 
-const loginCOntroller = new LoginController(login);
+const loginController = new LoginController(login);
 
-export { loginCOntroller };
+export { loginController };
