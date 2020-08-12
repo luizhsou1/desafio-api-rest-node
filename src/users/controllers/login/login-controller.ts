@@ -1,25 +1,25 @@
 import { Request, Response } from 'express';
 import { Controller } from '@/shared/controller';
 import { ValidationError, DomainError } from '@/shared/errors';
-import { Login } from './login';
-import { LoginDto } from './login-dto';
+import { UseCase } from '@/shared/use-case';
+import { LoginDto, LoginDtoOutput } from '@/users/domain/use-cases/login';
 
 export class LoginController implements Controller {
   constructor(
-    private login: Login,
+    private login: UseCase<LoginDto, LoginDtoOutput>,
   ) {}
 
-  async handle(request: Request, response: Response): Promise<Response> {
+  async handle(req: Request, res: Response): Promise<Response> {
     try {
-      this._validation(request.body);
-      const userDto = await this.login.execute(request.body);
+      this._validation(req.body);
+      const userDto = await this.login.execute(req.body);
 
-      return response.status(200).json(userDto);
+      return res.status(200).json(userDto);
     } catch (error) {
       if (error instanceof DomainError || error instanceof ValidationError) {
-        return response.status(400).json(error);
+        return res.status(400).json(error);
       }
-      return response.status(500).json({ error: 'InternalServerError' });
+      return res.status(500).json({ error: 'InternalServerError' });
     }
   }
 

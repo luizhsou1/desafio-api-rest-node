@@ -1,17 +1,18 @@
 import { UsersRepositoryFile } from '@/users/repositories/implementations/users-repository-file';
 import { jwtSecret, jwtExpirationTime } from '@/configs/env';
 import { JsonWebTokenImpl } from '@/providers/jwt/json-web-token-impl';
-import { Login } from './login';
-import { LoginController } from './login-controller';
+import { RegisterUser } from '@/users/domain/use-cases/register-user';
+import { RegisterUserController } from './register-user-controller';
 
 const usersRepoFile = new UsersRepositoryFile();
 const jsonWebTokenImpl = new JsonWebTokenImpl(jwtSecret, jwtExpirationTime, usersRepoFile);
 
-const login = new Login(
+const registerUser = new RegisterUser(
   usersRepoFile,
   jsonWebTokenImpl,
+  '127.0.0.1', // TODO Refazer antes de entregar
 );
 
-const loginCOntroller = new LoginController(login);
+const registerUserController = new RegisterUserController(registerUser);
 
-export { loginCOntroller };
+export { registerUserController };

@@ -1,4 +1,4 @@
-import { User } from '@/users/entities/user';
+import { User } from '@/users/domain/entities/user';
 
 export interface IUsersRepository {
   /**

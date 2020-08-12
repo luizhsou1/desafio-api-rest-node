@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
 import { Controller } from '@/shared/controller';
 import { ValidationError, DomainError } from '@/shared/errors';
-import { RegisterUser } from './register-user';
-import { RegisterUserDto } from './register-user-dto';
+import { UseCase } from '@/shared/use-case';
+import { LoginDtoOutput } from '@/users/domain/use-cases/login';
+import { RegisterUserDto } from '@/users/domain/use-cases/register-user';
 
 export class RegisterUserController implements Controller {
   constructor(
-    private registerUser: RegisterUser,
+    private registerUser: UseCase<RegisterUserDto, LoginDtoOutput>,
   ) {}
 
   async handle(request: Request, response: Response): Promise<Response> {

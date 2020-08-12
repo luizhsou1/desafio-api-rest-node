@@ -1,5 +1,5 @@
 import { UsersRepositoryFile } from '@/users/repositories/implementations/users-repository-file';
-import { UpdateUser } from './update-user';
+import { UpdateUser } from '@/users/domain/use-cases/update-user';
 import { UpdateUserController } from './update-user-controller';
 
 const usersRepoFile = new UsersRepositoryFile();

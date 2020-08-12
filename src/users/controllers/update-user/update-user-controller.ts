@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 import { Controller } from '@/shared/controller';
-import { UserDto } from '@/users/entities/user';
+import { UserDto } from '@/users/domain/entities/user';
 import { ValidationError, DomainError } from '@/shared/errors';
-import { UpdateUser } from './update-user';
+import { UseCase } from '@/shared/use-case';
 
 export class UpdateUserController implements Controller {
   constructor(
-    private updateUser: UpdateUser,
+    private updateUser: UseCase<UserDto, UserDto>,
   ) {}
 
   async handle(request: Request, response: Response): Promise<Response> {

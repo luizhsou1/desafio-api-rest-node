@@ -1,10 +1,14 @@
 import { UseCase } from '@/shared/use-case';
-import { User } from '@/users/entities/user';
-import { ValidationError } from '@/shared/errors';
+import { User } from '@/users/domain/entities/user';
 import { IUsersRepository } from '@/users/repositories/i-users-repository';
 import { IJsonWebToken } from '@/providers/jwt/i-json-web-token';
-import { RegisterUserDto } from './register-user-dto';
-import { LoginDtoOutput } from '../login/login-dto';
+import { LoginDtoOutput } from './login';
+
+export interface RegisterUserDto {
+  email: string,
+  password: string,
+  passwordConfirmation: string;
+}
 
 /**
  * Registra usuário com informações básicas, para que posteriormente ele possa atualizar suas informações

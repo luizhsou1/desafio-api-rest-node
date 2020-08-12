@@ -1,7 +1,7 @@
-import { Password } from '@/users/value-objects';
+import { Password } from '@/users/domain/value-objects';
 import { User, UserDto } from './user';
 
-const makeUserDtoFake = (): UserDto => ({
+export const makeUserDtoFake = (): UserDto => ({
   email: 'luiz@mail.com',
   password: '123456',
   fullName: 'Luiz Henrique de Souza',
