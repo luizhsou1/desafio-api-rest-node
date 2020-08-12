@@ -2,9 +2,9 @@ import bcrypt from 'bcrypt';
 import { DomainError } from '@/shared/errors';
 
 export class InvalidPasswordError extends DomainError {
-  constructor() {
+  constructor(message: string) {
     // eslint-disable-next-line no-use-before-define
-    super('InvalidPasswordError', `Informe uma senha com pelo menos ${Password.minLength} caracteres`);
+    super('InvalidPasswordError', message);
   }
 }
 
@@ -19,7 +19,7 @@ export class Password {
     const password = new Password();
 
     if (!password._validatePassword(value)) {
-      throw new InvalidPasswordError();
+      throw new InvalidPasswordError(`Informe uma senha com pelo menos ${Password.minLength} caracteres`);
     }
 
     password._value = await password._toHash(value);
