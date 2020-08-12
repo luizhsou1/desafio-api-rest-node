@@ -24,7 +24,7 @@ describe('Repository - UsersRepositoryFile', () => {
   });
 
   test('Deve atualizar informação de usuário existente', async () => {
-    const sut = new UsersRepositoryFile('./src/infra/files/test');
+    const sut = new UsersRepositoryFile('./files/users-test.json');
 
     const fakeUserDto = makeUserDtoFake();
     fakeUserDto.fullName = 'John';
@@ -36,7 +36,7 @@ describe('Repository - UsersRepositoryFile', () => {
   });
 
   test('Deve atualizar informação de usuário existente', async () => {
-    const sut = new UsersRepositoryFile('./src/infra/files/test');
+    const sut = new UsersRepositoryFile('./files/users-test.json');
 
     const fakeUserDto = makeUserDtoFake();
     fakeUserDto.fullName = 'John';

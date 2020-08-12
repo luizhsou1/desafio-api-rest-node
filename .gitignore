@@ -8,7 +8,4 @@
 # Environment variables
 .env
 
-src/shared/files/*
-!src/shared/files/*.json
-src/shared/files-test/*
-!src/shared/files-test/*.json
+files/**/*.txt

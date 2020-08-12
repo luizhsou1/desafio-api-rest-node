@@ -4,16 +4,16 @@
 
 import { IUsersRepository } from '../i-users-repository';
 import { User, UserDto } from '../../domain/entities/user';
-import { jsonReader, jsonWriter, textWriter } from '../../../infra/files/files-helper';
+import { jsonReader, jsonWriter, textWriter } from '../../../shared/files-helper';
 
 export class UsersRepositoryFile implements IUsersRepository {
-  private dirname: string;
-  constructor(dirname?: string) {
-    this.dirname = dirname || './src/infra/files';
+  private filename: string;
+  constructor(filename?: string) {
+    this.filename = filename || './files/users-test.json';
   }
 
   async save(user: User): Promise<void> {
-    let users = jsonReader(`${this.dirname}/users.json`) as Array<UserDto>;
+    let users = jsonReader(this.filename) as Array<UserDto>;
     const userFound = await this.findByEmail(user.email.value);
 
     if (userFound) {
@@ -33,7 +33,7 @@ export class UsersRepositoryFile implements IUsersRepository {
       users.push(user.toDto());
     }
 
-    jsonWriter(`${this.dirname}/users.json`, users);
+    jsonWriter(this.filename, users);
   }
 
   saveTxt(user: User): Promise<void> {
@@ -48,12 +48,12 @@ Usuario Autenticado
 Login: ${email}
 IP: ${ip} (IP do último acesso)
 `;
-    textWriter(`${this.dirname}/${email}.txt`, content);
+    textWriter(`./files/texts/${email}.txt`, content);
     return Promise.resolve();
   }
 
   async findByEmail(email: string): Promise<User> {
-    const users = jsonReader(`${this.dirname}/users.json`) as Array<UserDto>;
+    const users = jsonReader(this.filename) as Array<UserDto>;
     const userDtoFound = users.length > 0 ? users.find((u) => u.email === email) : undefined;
     if (userDtoFound) {
       return await User.create(userDtoFound);

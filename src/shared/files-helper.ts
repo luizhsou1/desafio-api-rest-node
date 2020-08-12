@@ -1,4 +1,4 @@
-import fs, { exists } from 'fs';
+import fs from 'fs';
 
 export const jsonReader = (file: string): Object => {
   const fileBuffer = fs.readFileSync(file, 'utf-8');
