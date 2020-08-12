@@ -1,6 +1,6 @@
-import { UseCase } from '@/shared/use-case';
-import { UserDto, User } from '@/users/domain/entities/user';
-import { IUsersRepository } from '@/users/repositories/i-users-repository';
+import { UseCase } from '../../../shared/use-case';
+import { UserDto, User } from '../entities/user';
+import { IUsersRepository } from '../../repositories/i-users-repository';
 
 /**
  * Atualiza dados do usuário

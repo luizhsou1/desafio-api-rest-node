@@ -1,6 +1,6 @@
-import { UsersRepositoryFile } from '@/users/repositories/implementations/users-repository-file';
-import { UpdateUser } from '@/users/domain/use-cases/update-user';
 import { UpdateUserController } from './update-user-controller';
+import { UsersRepositoryFile } from '../../repositories/implementations/users-repository-file';
+import { UpdateUser } from '../../domain/use-cases/update-user';
 
 const usersRepoFile = new UsersRepositoryFile();
 

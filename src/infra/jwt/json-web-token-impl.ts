@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import { IUsersRepository } from '@/users/repositories/i-users-repository';
-import { User } from '@/users/domain/entities/user';
+import { IUsersRepository } from '../../users/repositories/i-users-repository';
+import { User } from '../../users/domain/entities/user';
 import { IJsonWebToken, PayloadJwt } from './i-json-web-token';
 
 export class JsonWebTokenError extends Error {

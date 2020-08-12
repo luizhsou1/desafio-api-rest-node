@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { updateUserController } from '@/users/controllers/update-user';
-import { loginController } from '@/users/controllers/login';
-import { registerUserController } from '@/users/controllers/register';
+import { registerUserController } from '../users/controllers/register';
+import { loginController } from '../users/controllers/login';
+import { updateUserController } from '../users/controllers/update-user';
 
 const router = Router();
 

@@ -1,9 +1,9 @@
-import { UseCase } from '@/shared/use-case';
-import { NotFoundError } from '@/shared/errors';
-import { IUsersRepository } from '@/users/repositories/i-users-repository';
-import { IJsonWebToken } from '@/infra/jwt/i-json-web-token';
-import { UserDto } from '@/users/domain/entities/user';
 import { InvalidPasswordError } from '../value-objects';
+import { UserDto } from '../entities/user';
+import { UseCase } from '../../../shared/use-case';
+import { IUsersRepository } from '../../repositories/i-users-repository';
+import { IJsonWebToken } from '../../../infra/jwt/i-json-web-token';
+import { NotFoundError } from '../../../shared/errors';
 
 export interface LoginDto {
   email: string,

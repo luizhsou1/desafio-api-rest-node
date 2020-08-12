@@ -1,9 +1,9 @@
-import { UseCase } from '@/shared/use-case';
-import { User } from '@/users/domain/entities/user';
-import { IUsersRepository } from '@/users/repositories/i-users-repository';
-import { IJsonWebToken } from '@/infra/jwt/i-json-web-token';
-import { UserInUseError } from '@/shared/errors';
 import { LoginDtoOutput } from './login';
+import { UseCase } from '../../../shared/use-case';
+import { IUsersRepository } from '../../repositories/i-users-repository';
+import { IJsonWebToken } from '../../../infra/jwt/i-json-web-token';
+import { UserInUseError } from '../../../shared/errors';
+import { User } from '../entities/user';
 
 export interface RegisterUserDto {
   email: string,

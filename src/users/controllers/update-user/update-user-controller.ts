@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { Controller } from '@/shared/controller';
-import { UserDto } from '@/users/domain/entities/user';
-import { ValidationError, DomainError } from '@/shared/errors';
-import { UseCase } from '@/shared/use-case';
+import { Controller } from '../../../shared/controller';
+import { UseCase } from '../../../shared/use-case';
+import { UserDto } from '../../domain/entities/user';
+import { DomainError, ValidationError } from '../../../shared/errors';
 
 export class UpdateUserController implements Controller {
   constructor(

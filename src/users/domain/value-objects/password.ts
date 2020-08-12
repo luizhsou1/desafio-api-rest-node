@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { DomainError } from '@/shared/errors';
+import { DomainError } from '../../../shared/errors';
 
 export class InvalidPasswordError extends DomainError {
   constructor(message: string) {

@@ -2,9 +2,9 @@
 // Escolhi trabalhar com JSON, única e exclusivamente por ser mais fácil de manipular no javascript
 // Mas tem o método saveTxt que persiti o usuário como txt no formato proposto no desafio, para poder ser baixado posteriormente
 
-import { User, UserDto } from '@/users/domain/entities/user';
-import { jsonReader, jsonWriter, textWriter } from '@/infra/files/files-helper';
 import { IUsersRepository } from '../i-users-repository';
+import { User, UserDto } from '../../domain/entities/user';
+import { jsonReader, jsonWriter, textWriter } from '../../../infra/files/files-helper';
 
 export class UsersRepositoryFile implements IUsersRepository {
   private dirname: string;

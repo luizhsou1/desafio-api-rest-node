@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { Controller } from '@/shared/controller';
-import { ValidationError, DomainError } from '@/shared/errors';
-import { UseCase } from '@/shared/use-case';
-import { LoginDto, LoginDtoOutput } from '@/users/domain/use-cases/login';
+import { Controller } from '../../../shared/controller';
+import { UseCase } from '../../../shared/use-case';
+import { LoginDto, LoginDtoOutput } from '../../domain/use-cases/login';
+import { DomainError, ValidationError } from '../../../shared/errors';
 
 export class LoginController implements Controller {
   constructor(

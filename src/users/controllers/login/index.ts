@@ -1,8 +1,8 @@
-import { UsersRepositoryFile } from '@/users/repositories/implementations/users-repository-file';
-import { jwtSecret, jwtExpirationTime } from '@/configs/env';
-import { JsonWebTokenImpl } from '@/infra/jwt/json-web-token-impl';
-import { Login } from '@/users/domain/use-cases/login';
 import { LoginController } from './login-controller';
+import { UsersRepositoryFile } from '../../repositories/implementations/users-repository-file';
+import { JsonWebTokenImpl } from '../../../infra/jwt/json-web-token-impl';
+import { jwtSecret, jwtExpirationTime } from '../../../configs/env';
+import { Login } from '../../domain/use-cases/login';
 
 const usersRepoFile = new UsersRepositoryFile();
 const jsonWebTokenImpl = new JsonWebTokenImpl(jwtSecret, jwtExpirationTime, usersRepoFile);
