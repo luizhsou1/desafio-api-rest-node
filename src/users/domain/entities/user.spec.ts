@@ -11,7 +11,7 @@ export const makeUserDtoFake = (): UserDto => ({
   ip: '127.0.0.1',
 });
 
-const makeSut = async (): Promise<User> => await User.create(makeUserDtoFake());
+const makeSut = (): User => new User(makeUserDtoFake());
 
 describe('Entity - User', () => {
   test('Deve instanciar um Usuario quando passar valores corretos no construtor', async () => {
@@ -20,7 +20,7 @@ describe('Entity - User', () => {
   });
 
   test('Deve instanciar Usuario quando deixar de passar algum valor que não é obrigatório', async () => {
-    let user = await User.create({
+    let user = new User({
       email: 'luiz@mail.com',
       password: '123456',
       dateOfBirth: '14/01/1997',
@@ -29,7 +29,7 @@ describe('Entity - User', () => {
       ip: '127.0.0.1',
     });
     expect(user).toBeTruthy();
-    user = await User.create({
+    user = new User({
       email: 'luiz@mail.com',
       password: '123456',
       fullName: 'Luiz Henrique de Souza',
@@ -38,7 +38,7 @@ describe('Entity - User', () => {
       ip: '127.0.0.1',
     });
     expect(user).toBeTruthy();
-    user = await User.create({
+    user = new User({
       email: 'luiz@mail.com',
       password: '123456',
       fullName: 'Luiz Henrique de Souza',
@@ -47,7 +47,7 @@ describe('Entity - User', () => {
       ip: '127.0.0.1',
     });
     expect(user).toBeTruthy();
-    user = await User.create({
+    user = new User({
       email: 'luiz@mail.com',
       password: '123456',
       fullName: 'Luiz Henrique de Souza',
@@ -58,8 +58,8 @@ describe('Entity - User', () => {
     expect(user).toBeTruthy();
   });
 
-  test('Deve retornar uma instância de Password no get de password', async () => {
-    const sut = await makeSut();
+  test('Deve retornar uma instância de Password no get de password', () => {
+    const sut = makeSut();
     expect(sut.password).toBeInstanceOf(Password);
   });
 

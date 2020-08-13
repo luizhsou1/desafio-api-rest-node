@@ -16,7 +16,7 @@ describe('Repository - UsersRepositoryFile', () => {
     const sut = new UsersRepositoryFile();
 
     const fakeUserDto = makeUserDtoFake();
-    const u = await User.create(fakeUserDto);
+    const u = new User(fakeUserDto);
     await sut.save(u);
 
     const user = await sut.findByEmail(fakeUserDto.email);
@@ -28,10 +28,10 @@ describe('Repository - UsersRepositoryFile', () => {
 
     const fakeUserDto = makeUserDtoFake();
     fakeUserDto.fullName = 'John';
-    const u = await User.create(fakeUserDto);
+    const u = new User(fakeUserDto);
     await sut.save(u);
 
     const us = await sut.findByEmail(fakeUserDto.email);
-    expect(us.toDto().fullName).toBe('John');
+    expect((await us.toDto()).fullName).toBe('John');
   });
 });
