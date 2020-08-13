@@ -4,8 +4,8 @@
   "description": "Desafio proposto pelo BTG Pactual para seguir para a próxima fase da entrevista",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node ./dist/server.js",
-    "dev": "nodemon -L --watch ./dist --inspect=9222 --nolazy ./dist/server.js",
+    "start": "npm run build && node -r dotenv/config ./dist/server.js",
+    "dev": "nodemon -L --watch ./dist --inspect=9222 --nolazy -r dotenv/config ./dist/server.js",
     "build": "rimraf dist && tsc -p tsconfig.build.json",
     "build:watch": "tsc -w -p tsconfig.build.json",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
@@ -47,6 +47,7 @@
   "dependencies": {
     "bcrypt": "^5.0.0",
     "cpf-cnpj-validator": "^1.0.2",
+    "dotenv": "^8.2.0",
     "email-validator": "^2.0.4",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
