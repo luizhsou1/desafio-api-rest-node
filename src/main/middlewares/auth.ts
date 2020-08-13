@@ -12,7 +12,7 @@ export const auth = async (req, res, next) => {
       .status(401)
       .json({
         error: 'JsonWebTokenError',
-        message: 'Token não fornecido no parâmetro Authorization header da requisição',
+        message: 'Token não fornecido no parâmetro Authorization do header da requisição',
       });
   }
 
