@@ -45,4 +45,5 @@ Rode `npm run <script name>`:
 2. [Documentação da api](http://localhost:3000/docs) (Caso esteja rodando na porta **3000**)
 3. Caso deseje debugar **utilizando o VS Code**, já acompanha um arquivo de configuração para dar um attach no processo em execução, basta antes ter rodado `npm run dev`.
 4. Cobertura de testes está apenas na **camada de domínio** e **repositories** do módulo de **users**, porém com o tempo outras camadas também devem ser cobertas por testes.
+5. Caso deseje alterar alguma variável de ambiente, renomeie o arquivo `.env.example` para `.env`, alterando seus valores de acordo com o que deseja.
 
