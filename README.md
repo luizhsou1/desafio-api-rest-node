@@ -33,5 +33,6 @@ Rode `npm run <script name>`:
 
 ## ⚠️ Observações
 
-1. [Documentação da api](http://localhost:3000/docs) (Caso esteja rodando na porta 3000)
-2. Caso deseje debugar utilizando o VS Code, já acompanha um arquivo de configuração para dar um attach no processo em execução, basta antes ter rodado `npm run dev`.
+1. Arquivos no formato .txt de cada usuário se encontram na pasta `files/texts`
+2. [Documentação da api](http://localhost:3000/docs) (Caso esteja rodando na porta 3000)
+3. Caso deseje debugar utilizando o VS Code, já acompanha um arquivo de configuração para dar um attach no processo em execução, basta antes ter rodado `npm run dev`.
