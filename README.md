@@ -33,6 +33,7 @@ Rode `npm run <script name>`:
 
 ## ⚠️ Observações
 
-1. Arquivos no formato .txt de cada usuário se encontram na pasta `files/texts`
-2. [Documentação da api](http://localhost:3000/docs) (Caso esteja rodando na porta 3000)
-3. Caso deseje debugar utilizando o VS Code, já acompanha um arquivo de configuração para dar um attach no processo em execução, basta antes ter rodado `npm run dev`.
+1. Arquivos no formato **.txt** de cada usuário se encontram na pasta `files/texts`
+2. [Documentação da api](http://localhost:3000/docs) (Caso esteja rodando na porta **3000**)
+3. Caso deseje debugar **utilizando o VS Code**, já acompanha um arquivo de configuração para dar um attach no processo em execução, basta antes ter rodado `npm run dev`.
+4. Cobertura de testes está apenas na **camada de domínio** e **repositories** do módulo de **users**, porem com tempo outras camadas também devem ser cobertas por testes.
