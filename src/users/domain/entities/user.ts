@@ -2,7 +2,7 @@ import { Email, Cpf, DateOfBirth, Password } from '../value-objects';
 
 export interface UserDto {
     email: string,
-    password: string,
+    password?: string,
     fullName?: string,
     dateOfBirth?: string,
     cpf?: string,
@@ -22,34 +22,26 @@ export class User {
   /**
    * @throws DomainError
    */
-  constructor() {}
-
-  /**
-   * Função construtora
-   */
-  static async create(props: UserDto) {
-    const user = new User();
-    user._email = new Email(props.email);
-    user._password = await Password.create(props.password);
-    user._fullName = props.fullName ? props.fullName : undefined;
-    user._dateOfBirth = props.dateOfBirth ? new DateOfBirth(props.dateOfBirth) : undefined;
-    user._cpf = props.cpf ? new Cpf(props.cpf) : undefined;
-    user._rg = props.rg ? props.rg : undefined;
-    user._ip = props.ip;
-
-    return user;
+  constructor(props: UserDto) {
+    this._email = new Email(props.email);
+    this._password = props.password ? new Password(props.password) : undefined;
+    this._fullName = props.fullName ? props.fullName : undefined;
+    this._dateOfBirth = props.dateOfBirth ? new DateOfBirth(props.dateOfBirth) : undefined;
+    this._cpf = props.cpf ? new Cpf(props.cpf) : undefined;
+    this._rg = props.rg ? props.rg : undefined;
+    this._ip = props.ip;
   }
 
   /**
    * Retorna apenas valores puros do javascript
    */
-  toDto(): UserDto {
+  async toDto(): Promise<UserDto> {
     return {
       email: this.email.value,
-      password: this.password.value,
+      password: this.password ? await this.password.toHash() : undefined,
       fullName: this._fullName,
-      dateOfBirth: this._dateOfBirth.value,
-      cpf: this._cpf.value,
+      dateOfBirth: this._dateOfBirth ? this._dateOfBirth.value : undefined,
+      cpf: this._cpf ? this._cpf.value : undefined,
       rg: this._rg,
       ip: this._ip,
     };

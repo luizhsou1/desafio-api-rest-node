@@ -3,7 +3,7 @@ import { Controller } from '../../../shared/controller';
 import { UseCase } from '../../../shared/use-case';
 import { RegisterUserDto } from '../../domain/use-cases/register-user';
 import { LoginDtoOutput } from '../../domain/use-cases/login';
-import { DomainError, ValidationError } from '../../../shared/errors';
+import { ValidationError } from '../../../shared/errors';
 
 export class RegisterUserController implements Controller {
   constructor(
@@ -13,8 +13,12 @@ export class RegisterUserController implements Controller {
   async handle(req: Request, res: Response, next: NextFunction): Promise<Response> {
     try {
       this._validation(req.body);
-      const userDto = await this.registerUser.execute(req.body);
+      const userDto = await this.registerUser.execute({
+        ...req.body,
+        ip: req.ip === '::1' ? '127.0.0.1' : req.ip,
+      });
 
+      delete userDto.user.password;
       return res.status(201).json(userDto);
     } catch (error) {
       next(error);

@@ -2,13 +2,7 @@ import jwt from 'jsonwebtoken';
 import { IUsersRepository } from '../../users/repositories/i-users-repository';
 import { User } from '../../users/domain/entities/user';
 import { IJsonWebToken, PayloadJwt } from './i-json-web-token';
-
-export class JsonWebTokenError extends Error {
-  constructor(message) {
-    super(message);
-    this.name = 'JsonWebTokenError';
-  }
-}
+import { JsonWebTokenError } from '../../shared/errors';
 
 export class JsonWebTokenImpl implements IJsonWebToken {
   constructor(
@@ -19,7 +13,7 @@ export class JsonWebTokenImpl implements IJsonWebToken {
 
   async generate(user: User): Promise<string> {
     const payload: PayloadJwt = {
-      sub: user.toDto().email,
+      sub: (await user.toDto()).email,
     };
     return await jwt.sign(payload, this.secret, { expiresIn: this.expirationTime });
   }

@@ -16,11 +16,12 @@ export class UsersRepositoryFile implements IUsersRepository {
     let users = jsonReader(this.filename) as Array<UserDto>;
     const userFound = await this.findByEmail(user.email.value);
 
+    users = users || [] as Array<UserDto>;
     if (userFound) {
+      const { fullName, cpf, dateOfBirth, rg, ip } = await user.toDto();
       users = users.map((u) => {
         if (u.email === user.email.value) {
           // Únicos dados que podem ser alterados
-          const { fullName, cpf, dateOfBirth, rg, ip } = user.toDto();
           u.fullName = fullName;
           u.cpf = cpf;
           u.dateOfBirth = dateOfBirth;
@@ -30,16 +31,15 @@ export class UsersRepositoryFile implements IUsersRepository {
         return u;
       });
     } else {
-      users.push(user.toDto());
+      users.push(await user.toDto());
     }
 
     jsonWriter(this.filename, users);
   }
 
-  saveTxt(user: User): Promise<void> {
-    const { email, cpf, dateOfBirth, fullName, rg, ip } = user.toDto();
-    const content = `Ex:
-Nome Completo: ${fullName}
+  async saveTxt(user: User): Promise<void> {
+    const { email, cpf, dateOfBirth, fullName, rg, ip } = await user.toDto();
+    const content = `Nome Completo: ${fullName}
 Data de Nascimento: ${dateOfBirth}
 CPF: ${cpf}
 RG: ${rg}
@@ -49,14 +49,16 @@ Login: ${email}
 IP: ${ip} (IP do último acesso)
 `;
     textWriter(`./files/texts/${email}.txt`, content);
-    return Promise.resolve();
   }
 
   async findByEmail(email: string): Promise<User> {
-    const users = jsonReader(this.filename) as Array<UserDto>;
+    let users = jsonReader(this.filename) as Array<UserDto>;
+    users = users || [] as Array<UserDto>;
+
     const userDtoFound = users.length > 0 ? users.find((u) => u.email === email) : undefined;
+
     if (userDtoFound) {
-      return await User.create(userDtoFound);
+      return new User(userDtoFound);
     }
   }
 }

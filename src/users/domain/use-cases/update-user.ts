@@ -1,21 +1,35 @@
+import { NotFoundError } from '../../../shared/errors';
 import { UseCase } from '../../../shared/use-case';
 import { UserDto, User } from '../entities/user';
 import { IUsersRepository } from '../../repositories/i-users-repository';
 
+export interface UpdateUserDto {
+  email: string,
+  fullName?: string,
+  dateOfBirth?: string,
+  cpf?: string,
+  rg?: string,
+  ip: string,
+}
+
 /**
  * Atualiza dados do usuário
  */
-export class UpdateUser implements UseCase<UserDto, UserDto> {
+export class UpdateUser implements UseCase<UpdateUserDto, UserDto> {
   constructor(
     private readonly usersRepo: IUsersRepository,
-    private readonly ip: string,
   ) {}
 
-  async execute(data?: UserDto): Promise<UserDto> {
-    data.ip = this.ip;
-    const user = await User.create(data);
-    await this.usersRepo.save(user);
+  async execute(data?: UpdateUserDto): Promise<UserDto> {
+    let user = await this.usersRepo.findByEmail(data.email);
+    if (!user) {
+      throw new NotFoundError('UserNotFoundError', 'Usuário não encontrado');
+    }
 
-    return data;
+    user = new User(data);
+    await this.usersRepo.save(user);
+    await this.usersRepo.saveTxt(user);
+
+    return user.toDto();
   }
 }

@@ -7,4 +7,5 @@ export interface IJsonWebToken {
 
 export interface PayloadJwt {
   sub: string,
+  exp?: number,
 }

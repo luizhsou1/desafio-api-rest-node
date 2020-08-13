@@ -31,12 +31,12 @@ export class Login implements UseCase<LoginDto, LoginDtoOutput> {
       throw new NotFoundError('UserNotFoundError', 'Usuário não encontrado');
     }
 
-    if (!user.password.isEqual(data.password)) {
+    if (!await user.password.isEqual(data.password)) {
       throw new InvalidPasswordError('Usuário ou senha inválido');
     }
 
     const acessToken = await this.jwt.generate(user);
 
-    return { user: user.toDto(), acessToken };
+    return { user: await user.toDto(), acessToken };
   }
 }

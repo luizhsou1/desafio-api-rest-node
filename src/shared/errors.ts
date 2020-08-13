@@ -27,3 +27,10 @@ export class ValidationError extends Error {
     this.param = param;
   }
 }
+
+export class JsonWebTokenError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'JsonWebTokenError';
+  }
+}

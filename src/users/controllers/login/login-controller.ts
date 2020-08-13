@@ -3,7 +3,7 @@ import { nextTick } from 'process';
 import { Controller } from '../../../shared/controller';
 import { UseCase } from '../../../shared/use-case';
 import { LoginDto, LoginDtoOutput } from '../../domain/use-cases/login';
-import { DomainError, ValidationError } from '../../../shared/errors';
+import { ValidationError } from '../../../shared/errors';
 
 export class LoginController implements Controller {
   constructor(
@@ -15,6 +15,7 @@ export class LoginController implements Controller {
       this._validation(req.body);
       const userDto = await this.login.execute(req.body);
 
+      delete userDto.user.password;
       return res.status(200).json(userDto);
     } catch (error) {
       next(error);
