@@ -1,10 +1,15 @@
 import express from 'express';
+import { serve, setup } from 'swagger-ui-express';
 import { router } from './routes';
 import { DomainError, ValidationError } from '../shared/errors';
+import swaggerConfig from './docs';
+import { noCache } from './middlewares/no-cache';
 
 const app = express();
 
 app.use(express.json());
+
+app.use('/docs', noCache, serve, setup(swaggerConfig));
 
 app.use(router);
 
