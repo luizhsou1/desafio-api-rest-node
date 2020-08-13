@@ -1,6 +1,6 @@
 <h1 align="center"> Desafio BTG Pactual </h1>
 
-<p align="justify"> Desafio proposto pelo BTG Pactual para seguir para a próxima fase da entrevista. </p>
+<p align="justify"> Desafio proposto pelo BTG Pactual para seguir para a próxima fase da entrevista. Para acessar descrição original do desafio, [clique aqui](./DESAFIO-PROPOSTO.md) </p>
 
 ## 👨‍💻 Desenvolvedor
 
