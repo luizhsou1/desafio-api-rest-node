@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { DomainError } from '@/shared/errors';
+import { DomainError } from '../../../shared/errors';
 
 export class InvalidDateOfBirthError extends DomainError {
   constructor() {

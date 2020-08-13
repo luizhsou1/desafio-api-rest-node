@@ -1,5 +1,5 @@
 import { cpf } from 'cpf-cnpj-validator';
-import { DomainError } from '@/shared/errors';
+import { DomainError } from '../../../shared/errors';
 
 export class InvalidCpfError extends DomainError {
   constructor() {

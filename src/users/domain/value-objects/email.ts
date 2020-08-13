@@ -1,5 +1,5 @@
 import * as EmailValidator from 'email-validator';
-import { DomainError } from '@/shared/errors';
+import { DomainError } from '../../../shared/errors';
 
 export class InvalidEmailError extends DomainError {
   constructor() {

@@ -4,7 +4,10 @@
   "description": "Desafio proposto pelo BTG Pactual para seguir para a próxima fase da entrevista",
   "main": "index.js",
   "scripts": {
+    "start": "npm run build && node ./dist/server.js",
+    "dev": "nodemon -L --watch ./dist --inspect=9222 --nolazy ./dist/server.js",
     "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "build:watch": "tsc -w -p tsconfig.build.json",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "npm test -- --watch -c jest-unit.config.js",
@@ -23,7 +26,9 @@
   },
   "homepage": "https://github.com/luizhsou1/desafio-btg-pactual#readme",
   "devDependencies": {
+    "@types/express": "^4.17.7",
     "@types/jest": "^26.0.9",
+    "@types/jsonwebtoken": "^8.5.0",
     "@types/moment": "^2.13.0",
     "@types/node": "^14.0.27",
     "@typescript-eslint/eslint-plugin": "^3.9.0",
@@ -32,6 +37,7 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "jest": "^26.3.0",
+    "nodemon": "^2.0.4",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.2.0",
     "ts-node": "^8.10.2",
@@ -41,9 +47,8 @@
     "bcrypt": "^5.0.0",
     "cpf-cnpj-validator": "^1.0.2",
     "email-validator": "^2.0.4",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "moment": "^2.27.0"
-  },
-  "_moduleAliases": {
-    "@": "dist"
   }
 }

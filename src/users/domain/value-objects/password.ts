@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { DomainError } from '@/shared/errors';
+import { DomainError } from '../../../shared/errors';
 
 export class InvalidPasswordError extends DomainError {
   constructor(message: string) {
@@ -13,18 +13,12 @@ export class Password {
   static hashCost = 12;
 
   private _value: string
-  private constructor() {}
-
-  static async create(value: string): Promise<Password> {
-    const password = new Password();
-
-    if (!password._validatePassword(value)) {
+  constructor(value: string) {
+    if (!this._validatePassword(value)) {
       throw new InvalidPasswordError(`Informe uma senha com pelo menos ${Password.minLength} caracteres`);
     }
 
-    password._value = await password._toHash(value);
-
-    return password;
+    this._value = value;
   }
 
   get value(): string {
@@ -36,8 +30,8 @@ export class Password {
     return password.length >= Password.minLength;
   }
 
-  private async _toHash(password: string): Promise<string> {
-    return await bcrypt.hash(password, Password.hashCost);
+  async toHash(): Promise<string> {
+    return await bcrypt.hash(this.value, Password.hashCost);
   }
 
   async isEqual(comparablePassword: string) {
