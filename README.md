@@ -1,6 +1,6 @@
-<h1 align="center"> Desafio BTG Pactual </h1>
+<h1 align="center"> Desafio API REST em Node </h1>
 
-<p align="justify"> Desafio proposto pelo BTG Pactual para seguir para a próxima fase da entrevista. Para acessar descrição original do desafio, <a href="./DESAFIO-PROPOSTO.md">clique aqui</a> </p>
+<p align="justify"><a href="./DESAFIO-PROPOSTO.md">clique aqui</a> para visualizar o desafio...</p>
 
 ## 👨‍💻 Desenvolvedor
 
