@@ -1,5 +1,5 @@
 {
-  "name": "desafio-btg-pactual",
+  "name": "desafio-api-rest-node",
   "version": "1.0.0",
   "description": "Desafio proposto pelo BTG Pactual para seguir para a próxima fase da entrevista",
   "main": "index.js",
