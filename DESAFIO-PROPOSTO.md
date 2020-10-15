@@ -28,5 +28,3 @@ Desenvolva um serviço web REST onde conterá 2 funcionalidades:
    o uso de JWT);
  - Verificar se o usuário tem uma sessão valida para gerar o documento;
  - Inclusão de testes unitários e importante;
-
-Submeta o projeto ao github ou gitlab e nos envie o repositório para avaliarmos.
