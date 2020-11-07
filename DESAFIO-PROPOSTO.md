@@ -24,7 +24,6 @@ Desenvolva um serviço web REST onde conterá 2 funcionalidades:
 
 #### Pontos
 
- - Autenticação poderá ser feita a escolha do entrevistado (recomendamos
+ - Autenticação poderá ser feita a escolha do desafiante (recoemndo
    o uso de JWT);
  - Verificar se o usuário tem uma sessão valida para gerar o documento;
- - Inclusão de testes unitários e importante;
